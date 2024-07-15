@@ -1,0 +1,23 @@
+{
+  "name": "liquor-monitor-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./packages/index.ts",
+  "module": "./packages/index.ts",
+  "type": "module",
+  "types":"lib/types.d.ts",
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "rollup": "^4.18.1",
+    "rollup-plugin-dts": "^6.1.1",
+    "tslib": "^2.6.3",
+    "typescript": "^5.5.3"
+  }
+}
