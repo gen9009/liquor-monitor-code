@@ -1,16 +1,28 @@
 {
   "name": "liquor-monitor-code",
   "version": "1.0.0",
-  "description": "",
-  "main": "./packages/index.ts",
-  "module": "./packages/index.ts",
+  "description": "liquor-self-front-monitor",
+  "author": "gen9009",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gen9009/liquor-monitor-code.git"
+  },
+  "homepage": "https://github.com/gen9009/liquor-monitor-code",
+  "main": "lib/index.umd.js",
+  "module": "lib/index.esm.ts",
+  "types": "lib/types.d.ts",
   "type": "module",
-  "types":"lib/types.d.ts",
   "scripts": {
     "build": "rollup -c rollup.config.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "liquor",
+    "monitor",
+    "gen9009"
+  ],
+  "files": [
+    "lib"
+  ],
   "license": "ISC",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
