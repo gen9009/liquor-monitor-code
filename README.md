@@ -1,10 +1,10 @@
 ## monitor-report
 
 ```js
-import { init } from 'liquor-monitor-code'
+import Monitor from 'liquor-monitor-code'
 let options = {
   server:'',
   ...
 }
-init({...options})
+Monitor.init({...options})
 ```

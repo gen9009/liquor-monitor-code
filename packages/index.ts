@@ -29,3 +29,4 @@ function init(options: InitOptions) {
 
 
 export { init, monitorConfig };
+export default { init, monitorConfig }
