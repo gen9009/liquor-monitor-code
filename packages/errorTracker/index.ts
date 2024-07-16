@@ -1,15 +1,13 @@
-import { IErrorTrackerOptions } from '../types'
+import { IErrorOptions } from '../types'
 import { jsErrorTracker } from './jsError'
 import { promiseErrorTracker } from './promiseError'
 import { resourceErrorTracker } from './resourceError'
 
 
 
-export const initErrorTracker = (options: IErrorTrackerOptions) => {
+export const initErrorTracker = (options: IErrorOptions) => {
   const { enableJSErrors, enableResourceErrors, enablePromiseErrors } = options
+  enableJSErrors && jsErrorTracker()
   enableResourceErrors && resourceErrorTracker()
-
-
-  // enableJSErrors && jsErrorTracker()
-  // enablePromiseErrors && promiseErrorTracker()
+  enablePromiseErrors && promiseErrorTracker()
 }

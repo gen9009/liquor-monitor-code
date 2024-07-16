@@ -1,8 +1,8 @@
-import { ErrorType } from './enum';
+import { ErrorType, HistoryType } from './enum';
 /* 
   监控初始化参数
 */
-export interface InitOptions extends IErrorTrackerOptions {
+export interface InitOptions extends IErrorOptions, IBehaviorOptions, IPerformanceOptions {
   appId: string;  // 应用id
   env: string;    // 环境信息
   server: string; // 上报地址
@@ -14,10 +14,25 @@ export interface InitOptions extends IErrorTrackerOptions {
 /* 
   错误监控配置
 */
-export interface IErrorTrackerOptions {
+export interface IErrorOptions {
   enablePromiseErrors?: boolean; // 是否启用Promise错误监控
   enableJSErrors?: boolean; // 是否启用JS错误监控
   enableResourceErrors?: boolean; // 是否启用资源错误监控
+}
+/* 
+  行为监控配置
+*/
+export interface IBehaviorOptions {
+  mode: HistoryType; // 路由模式
+  enableEvents?: boolean; // 是否启用事件行为监控
+  enablePV?: boolean //是否启用Page View监控
+  enableUV?: boolean //是否启用User View监控
+}
+/* 
+  性能监控配置
+*/
+export interface IPerformanceOptions {
+  enablePerformance?: boolean; // 是否启用性能监控
 }
 /* 
   公共上报数据
