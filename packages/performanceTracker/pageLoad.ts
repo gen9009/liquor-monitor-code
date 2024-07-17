@@ -9,7 +9,7 @@ export const pageLoad = () => {
 */
 const getNavigationTiming = () => {
   // 获取性能数据
-  const [performanceData] = performance.getEntriesByType("navigation");
+  const [performanceData] = performance.getEntriesByType("navigation") as PerformanceNavigationTiming[];
 
   // 计算重定向时间
   let redirectTime = performanceData.redirectEnd - performanceData.redirectStart;
@@ -48,16 +48,17 @@ const getNavigationTiming = () => {
 
   // 获取 FCP 时间
   let fcpTime = 0;
-  const [fcpEntry] = performance.getEntriesByName("first-contentful-paint");
+  const [fcpEntry] = performance.getEntriesByName("first-contentful-paint") as PerformanceEntry[];
   if (fcpEntry) {
     fcpTime = fcpEntry.startTime;
   }
 
   // 获取 LCP 时间
   let lcpTime = 0;
-  const lcpEntries = performance.getEntriesByType("largest-contentful-paint");
+  const lcpEntries = performance.getEntriesByType("largest-contentful-paint") as PerformanceEntry[];
   if (lcpEntries.length > 0) {
-    lcpTime = lcpEntries[lcpEntries.length - 1].renderTime || lcpEntries[lcpEntries.length - 1].loadTime;
+    const lastEntry = lcpEntries[lcpEntries.length - 1];
+    lcpTime = (lastEntry as any).renderTime || lastEntry.startTime;
   }
 
   // Paint Timing
@@ -109,7 +110,7 @@ const getNavigationTiming = () => {
 const getResuorceTiming = () => {
 
   // 获取资源性能数据
-  let resourceData = performance.getEntriesByType('resource');
+  let resourceData = performance.getEntriesByType('resource') as PerformanceResourceTiming[]
 
   // 遍历资源数据
   resourceData.forEach(function (resource, i) {
@@ -121,7 +122,7 @@ const getResuorceTiming = () => {
     // 可计算的资源时间
     console.log(`== 资源 [${i}] - ${resource.name}`);
     // 重定向时间
-    let t = resource.redirectEnd - resource.redirectStart;
+    let t: any = resource.redirectEnd - resource.redirectStart;
     console.log(`… 重定向时间 = ${t}`);
 
     // DNS时间
@@ -137,14 +138,10 @@ const getResuorceTiming = () => {
     console.log(`… 响应时间 = ${t}`);
 
     // 获取直到响应结束
-    t =
-      resource.fetchStart > 0 ? resource.responseEnd - resource.fetchStart : "0";
-    console.log(`… 获取直到响应结束时间 = ${t}`);
+    t = resource.fetchStart > 0 ? resource.responseEnd - resource.fetchStart : "0"; console.log(`… 获取直到响应结束时间 = ${t}`);
 
     // 请求开始直到响应结束
-    t = resource.requestStart > 0 ? resource.responseEnd - resource.requestStart : "0";
-    console.log(`… 请求开始直到响应结束时间 = ${t}`);
-
+    t = resource.requestStart > 0 ? resource.responseEnd - resource.requestStart : "0"; console.log(`… 请求开始直到响应结束时间 = ${t}`);
     // 开始直到响应结束
     t = resource.startTime > 0 ? resource.responseEnd - resource.startTime : "0"; console.log(`… 开始直到响应结束时间 = ${t}`);
     // 构造要发送的资源数据

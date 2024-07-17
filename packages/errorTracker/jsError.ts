@@ -1,7 +1,7 @@
 import { report } from '../report'
 import { PublicErrorInit } from './publicError';
 import { JSErrorReport } from '../types'
-import { ErrorType } from '../enum';
+import { ErrorType } from '../shared/enum';
 import { isResource, getLines } from '../utils';
 export const jsErrorTracker = () => {
   window.addEventListener("error",

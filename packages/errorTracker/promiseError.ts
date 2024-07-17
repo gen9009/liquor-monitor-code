@@ -1,7 +1,7 @@
 import { report } from '../report'
 import { PublicErrorInit } from './publicError';
 import { PromiseErrorReport } from '../types'
-import { ErrorType } from '../enum';
+import { ErrorType } from '../shared/enum';
 import { isObject, getLines } from '../utils';
 // Promise主动catch不会执行unhandledrejection
 export const promiseErrorTracker = () => {

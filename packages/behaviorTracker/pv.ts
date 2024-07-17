@@ -10,7 +10,7 @@
 */
 
 import { report } from '../report';
-import { HistoryType } from '../enum';
+import { HistoryType } from '../shared/enum';
 
 // 通用的时间和页面追踪器
 class PageTracker {
@@ -35,7 +35,7 @@ class PageTracker {
     report({
       stayTime,
       page: this.beforePage,
-      
+
     });
     this.beforePage = currentPage;
   }

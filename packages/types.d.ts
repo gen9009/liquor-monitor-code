@@ -1,4 +1,4 @@
-import { ErrorType, HistoryType } from './enum';
+import { ErrorType, HistoryType } from './shared/enum';
 /* 
   监控初始化参数
 */
@@ -18,6 +18,8 @@ export interface IErrorOptions {
   enablePromiseErrors?: boolean; // 是否启用Promise错误监控
   enableJSErrors?: boolean; // 是否启用JS错误监控
   enableResourceErrors?: boolean; // 是否启用资源错误监控
+  enableXhrErrors?: boolean; // 是否启用xhr监控
+  enableFetchErrors?: boolean; // 是否启用fetch监控
 }
 /* 
   行为监控配置
@@ -34,6 +36,7 @@ export interface IBehaviorOptions {
 export interface IPerformanceOptions {
   enablePerformance?: boolean; // 是否启用性能监控
 }
+
 /* 
   公共上报数据
 */
@@ -85,3 +88,11 @@ export interface HTTPErrorReport extends PublicErrorReport {
   resourceUrl: string; // 发生资源错误的资源URL
 }
 
+
+/* 
+  shared
+*/
+
+export interface IAnyObject {
+  [key: string]: any
+}
