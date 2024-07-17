@@ -13,10 +13,9 @@ function rewriteXHR() {
   })
   rewriteAttr(originXHR.prototype, 'send', function (originSend) {
     return function (...args) {
-      /* 处理上报 */
+      /* 处理上报 待测试 */
       const errorHandler = function (event) {
         console.log('🚀::::::🐶💩', event)
-        /* 待测试 */
       }
       this.addListener('loadend', errorHandler)
       return originSend.apply(this, args);
