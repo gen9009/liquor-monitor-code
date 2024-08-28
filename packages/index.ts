@@ -9,7 +9,7 @@ import { initConfig, monitorConfig } from './config';
  */
 
 function init(options: InitOptions) {
-  // ------- 初始化配置 ---------
+  // ------- 初始化配置，写入window对象--------
   initConfig(options)
   // ------- 初始化错误监控 ---------
   initErrorTracker(options)

@@ -4,4 +4,3 @@ export const initConfig = function (options: InitOptions) {
   window[monitorConfig] = options;
 }
 export default initConfig;
-

@@ -2,8 +2,8 @@
   SPA 使用 history API 实现页面跳转
   重写history.pushState 和 history.replaceState，使页面跳转时，不刷新页面
   计算方式:
-
-  第一种步骤
+  
+    重写
     1. 初始化时间，在window.load开始计算一次，pushState/replace计算一次(获得时间差)
     2. pushState/replaceState 再计算一次(获取时间差)
 

@@ -32,10 +32,12 @@ export function report<T>(data: T) {
   // ------- navigator/img方式上报 -------
   // 不会有跨域问题
   if (navigator.sendBeacon) { // 支持sendBeacon的浏览器
-    navigator.sendBeacon(url, JSON.stringify(data));
+    navigator.sendBeacon(url, JSON.stringify(params));
+    console.log('🚀::::::🐶💩', params, 'navigator')
   } else { // 不支持sendBeacon的浏览器
     // 一般是1*1像素的gif
     let oImage = new Image();
-    oImage.src = `${url}?logs=${data}`;
+    oImage.src = `${url}?logs=${params}`;
+    console.log('🚀::::::🐶💩', params, 'oImage', oImage)
   }
 }
